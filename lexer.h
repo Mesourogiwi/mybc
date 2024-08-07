@@ -1,3 +1,4 @@
 #include <stdio.h>
 #define ID 1024
-int gettoken(FILE*);
+#define DEC 1025
+extern int gettoken(FILE*);
