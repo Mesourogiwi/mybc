@@ -20,4 +20,5 @@ int isID(FILE *tape) {
 int gettoken(FILE *source) {
     if (isID(source)) printf("It's an ID\n");
     else printf("Not found\n");
+    printf("Teste");
 }
