@@ -7,5 +7,6 @@ FILE *source;
 int main() {
     source = stdin;
     lookahead = gettoken(source);
+    E();
     return 0;
 }
