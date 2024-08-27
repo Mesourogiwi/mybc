@@ -19,22 +19,18 @@ void E(void)
     {
         match(lookahead);
     }
-    T();
-    while (lookahead == '+' || lookahead == '-')
-    {
-        match(lookahead);
-        T();
-    }
-}
-
-// T -> F
-void T(void)
-{
+_T:
+_F:
     F();
-    while (lookahead == '*' || lookahead == '/')
+    if (lookahead == '*' || lookahead == '/')
     {
         match(lookahead);
-        F();
+        goto _F;
+    }
+    if (lookahead == '+' || lookahead == '-')
+    {
+        match(lookahead);
+        goto _T;
     }
 }
 
