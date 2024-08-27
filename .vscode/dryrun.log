@@ -1,0 +1,8 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/aluno/Documentos/Eraldo/mybc-20240806/mybc'
+cc -I. -g   -c -o mybc.o mybc.c
+cc -I. -g   -c -o lexer.o lexer.c
+cc -I. -g   -c -o parser.o parser.c
+cc -o mybc mybc.o lexer.o parser.o
+make: Leaving directory '/home/aluno/Documentos/Eraldo/mybc-20240806/mybc'
+ 
