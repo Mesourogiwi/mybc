@@ -21,22 +21,6 @@ void E(void)
     }
 _T:
 _F:
-    F();
-    if (lookahead == '*' || lookahead == '/')
-    {
-        match(lookahead);
-        goto _F;
-    }
-    if (lookahead == '+' || lookahead == '-')
-    {
-        match(lookahead);
-        goto _T;
-    }
-}
-
-// F -> (E) | DEC | ID
-void F(void)
-{
     switch (lookahead)
     {
     case '(':
@@ -55,6 +39,16 @@ void F(void)
         break;
     default:
         match(ID);
+    }
+    if (lookahead == '*' || lookahead == '/')
+    {
+        match(lookahead);
+        goto _F;
+    }
+    if (lookahead == '+' || lookahead == '-')
+    {
+        match(lookahead);
+        goto _T;
     }
 }
 
