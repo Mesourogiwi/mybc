@@ -7,4 +7,7 @@ mybc: $(relocatable)
 
 clean:
 	$(RM) *.o
+
+mostlyclean: clean
+	$(RM) *~ mybc
 	

@@ -12,7 +12,7 @@ R -> +T R | -T R | <>
 Q -> *F Q | /F Q | <>
 */
 
-// E -> ['+'|'-'] T R
+// E -> [oplus] T
 void E(void)
 {
     if (lookahead == '+' || lookahead == '-')
@@ -20,14 +20,22 @@ void E(void)
         match(lookahead);
     }
     T();
-    R();
+    while (lookahead == '+' || lookahead == '-')
+    {
+        match(lookahead);
+        T();
+    }
 }
 
-// T -> F Q
+// T -> F
 void T(void)
 {
     F();
-    Q();
+    while (lookahead == '*' || lookahead == '/')
+    {
+        match(lookahead);
+        F();
+    }
 }
 
 // F -> (E) | DEC | ID
@@ -51,44 +59,6 @@ void F(void)
         break;
     default:
         match(ID);
-    }
-}
-
-// R -> +T R | -T R | <>
-void R(void)
-{
-    switch (lookahead)
-    {
-    case '+':
-        match('+');
-        T();
-        R();
-        break;
-    case '-':
-        match('-');
-        T();
-        R();
-        break;
-    default:;
-    }
-}
-
-// Q -> *F Q | /F Q | <>
-void Q(void)
-{
-    switch (lookahead)
-    {
-    case '*':
-        match('*');
-        F();
-        Q();
-        break;
-    case '/':
-        match('/');
-        F();
-        Q();
-        break;
-    default:;
     }
 }
 
