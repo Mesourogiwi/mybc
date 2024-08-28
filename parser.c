@@ -2,17 +2,6 @@
 #include <parser.h>
 int lookahead;
 
-/*
-LL(1) grammar:
-
-E -> ['+'|'-'] T R
-T -> F Q
-F -> (E) | DEC | ID
-R -> +T R | -T R | <>
-Q -> *F Q | /F Q | <>
-*/
-
-// E -> [oplus] T
 void E(void)
 {
     if (lookahead == '+' || lookahead == '-')
@@ -20,6 +9,7 @@ void E(void)
         match(lookahead);
     }
 _T:
+
 _F:
     switch (lookahead)
     {
@@ -60,7 +50,7 @@ void match(int expected)
     }
     else
     {
-        fprintf(stderr, "token mismatch\n");
+        fprintf(stderr, "token mismatch at line %d\n", linenum);
         exit(-3);
     }
 }

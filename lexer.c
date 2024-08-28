@@ -37,7 +37,6 @@ int isDEC(FILE *tape)
 		while (isdigit(head = getc(tape)))
 			;
 		ungetc(head, tape);
-		printf("é um decimal\n");
 		return DEC;
 	}
 	ungetc(head, tape);
