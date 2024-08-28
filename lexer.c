@@ -1,7 +1,10 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <lexer.h>
-int linenum = 0;
+
+#define MAXIDLEN 32
+
+char lexeme[MAXIDLEN + 1];
 // ID = [A-Za-z][A-Za-z0-9]*
 // Ex: abacaXI123
 int isID(FILE *tape)
@@ -31,13 +34,12 @@ int isDEC(FILE *tape)
 	{
 		if (head == '0')
 		{
-			printf("é um decimal\n");
+			printf("dec");
 			return DEC;
 		}
 		while (isdigit(head = getc(tape)))
 			;
 		ungetc(head, tape);
-		printf("é um decimal\n");
 		return DEC;
 	}
 	ungetc(head, tape);
